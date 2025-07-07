@@ -1,0 +1,485 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>SavaMovies - Movies List</title>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;900&display=swap" rel="stylesheet">
+  <script src="https://kit.fontawesome.com/a2e0e6c25d.js" crossorigin="anonymous"></script>
+  <meta name="description" content="SavaMovies - Watch the latest movies and series in Action, Comedy, Drama, Romance, Horror, Sci-Fi and more. Fast, simple, and free streaming platform." />
+<!-- Basic SEO Meta Tags -->
+<meta name="keywords" content="Rwandan porn, Kigali sex videos, Rwanda XXX, African porn, free Rwandan sex, local porn videos, Rwanda adult videos, HD Rwandan porn, amateur sex Rwanda, Rwandan girls" />
+<meta name="author" content="savamovies" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<meta name="robots" content="index, follow" />
+
+<!-- Open Graph (Facebook, WhatsApp, etc.) -->
+<meta property="og:title" content="savamovies - Free Rwandan Porn Videos" />
+<meta property="og:description" content="Watch HD Rwandan porn videos including amateur, local couples, Kigali girls, and more. 100% free African adult content." />
+<meta property="og:image" content="https://yourcdn.com/rwanda-preview.jpg" />
+<meta property="og:url" content="https://yourwebsiteurl.com" />
+<meta property="og:type" content="website" />
+
+<!-- Twitter Card -->
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:title" content="savamovies - Rwandan XXX Videos" />
+<meta name="twitter:description" content="Stream exclusive Rwandan sex videos, local girls, and amateur content. Updated daily. 100% free and fast-loading." />
+<meta name="twitter:image" content="https://yourcdn.com/rwanda-preview.jpg" />
+
+  <meta name="keywords" content="movies, online movies, free movies, movie streaming, watch movies, action movies, comedy movies, drama movies, horror movies, romance movies, sci-fi movies" />
+<meta name="author" content="SavaMovies" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+
+<!-- Open Graph for social media preview -->
+<meta property="og:title" content="SavaMovies - Watch Latest Movies & Series" />
+<meta property="og:description" content="Enjoy unlimited free movies and series from your favorite categories like Action, Comedy, Drama, and more." />
+<meta property="og:image" content="https://i.postimg.cc/Y0jYywCd/Screenshot-at-2025-07-04-21-54-14.png" />
+<meta property="og:url" content="https://yourwebsiteurl.com" />
+<meta property="og:type" content="website" />
+
+<!-- Twitter Card -->
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:title" content="SavaMovies - Watch Latest Movies & Series" />
+<meta name="twitter:description" content="Enjoy unlimited free movies and series from your favorite categories like Action, Comedy, Drama, and more." />
+<meta name="twitter:image" content="https://i.postimg.cc/Y0jYywCd/Screenshot-at-2025-07-04-21-54-14.png" />
+
+  <style>
+    * {
+      box-sizing: border-box;
+      font-family: 'Montserrat', sans-serif;
+    }
+
+    body {
+      background-color: #141414;
+      color: #fff;
+      margin: 0;
+      padding: 0;
+    }
+
+    h1 {
+      text-align: center;
+      font-size: 3rem;
+      padding: 20px 0;
+      color: #e50914;
+    }
+
+    #filters {
+      display: flex;
+      justify-content: center;
+      gap: 15px;
+      margin-bottom: 30px;
+      flex-wrap: wrap;
+      padding: 20px;
+      background-image: url('https://x.uuu.cam/pics/pornstarslikeitbig/keiran-lee-missy-martinez/piedi-pornstar-pinkfineart/hd-keiran-lee-missy-martinez-8.jpg');
+      background-size: cover;
+      background-position: center;
+      background-repeat: no-repeat;
+      border-radius: 10px;
+      box-shadow: inset 0 0 100px rgba(0, 0, 0, 0.6);
+    }
+
+    #searchBox, #categoryFilter {
+      background-color: #222;
+      border: none;
+      padding: 10px 15px;
+      color: #eee;
+      font-size: 1rem;
+      border-radius: 4px;
+      min-width: 200px;
+    }
+
+    button {
+      background-color: #e50914;
+      border: none;
+      color: white;
+      padding: 10px 20px;
+      font-weight: 700;
+      border-radius: 4px;
+      cursor: pointer;
+    }
+
+    #hero {
+      background-color: #1c1c1c;
+      text-align: center;
+      padding: 30px;
+      margin-bottom: 30px;
+    }
+
+    #hero img {
+      width: 100%;
+      max-height: 400px;
+      object-fit: cover;
+      border-radius: 10px;
+      margin-bottom: 20px;
+    }
+
+    #heroTitle {
+      font-size: 2rem;
+      margin-bottom: 10px;
+    }
+
+    #heroDescription {
+      color: #ccc;
+      font-size: 1.1rem;
+      max-width: 800px;
+      margin: auto;
+    }
+
+    #categories {
+      padding: 0 20px;
+    }
+
+    .category-section {
+      margin-bottom: 50px;
+    }
+
+    .category-title {
+      font-size: 1.8rem;
+      color: #e50914;
+      padding: 0 40px;
+      margin-bottom: 15px;
+    }
+
+    .movie-row {
+      display: flex;
+      gap: 20px;
+      overflow-x: auto;
+      padding: 0 40px;
+      scroll-behavior: smooth;
+    }
+
+    .movie-row::-webkit-scrollbar {
+      height: 8px;
+    }
+
+    .movie-row::-webkit-scrollbar-thumb {
+      background-color: #888;
+      border-radius: 4px;
+    }
+
+    .movie-row {
+      scrollbar-width: none;
+    }
+
+    .movie {
+      min-width: 200px;
+      max-width: 220px;
+      flex-shrink: 0;
+      background-color: #222;
+      border-radius: 10px;
+      padding: 10px;
+      transition: transform 0.3s;
+      cursor: pointer;
+    }
+
+    .movie:hover {
+      transform: scale(1.05);
+    }
+
+    .movie h3 {
+      font-size: 1rem;
+      text-align: center;
+      margin: 10px 0;
+      color: #e50914;
+    }
+
+    .thumbnail {
+      width: 100%;
+      height: 160px;
+      object-fit: cover;
+      border-radius: 8px;
+    }
+
+    video {
+      display: none;
+      width: 100vw;
+      height: 100vh;
+      position: fixed;
+      top: 0;
+      left: 0;
+      z-index: 1000;
+      background-color: black;
+      object-fit: contain;
+    }
+
+    .movie-description, .comments-container {
+      display: none;
+      max-width: 900px;
+      margin: 15px auto;
+      padding: 10px;
+      background-color: #181818;
+      border-radius: 10px;
+    }
+
+    .movie-description {
+      font-size: 1rem;
+      color: #ccc;
+    }
+
+    .comments-container {
+      font-size: 0.9rem;
+    }
+
+    #closeVideoBtn {
+      position: fixed;
+      top: 20px;
+      right: 30px;
+      font-size: 2.5rem;
+      z-index: 1100;
+      background: rgba(0, 0, 0, 0.6);
+      border-radius: 50%;
+      width: 48px;
+      height: 48px;
+      text-align: center;
+      line-height: 48px;
+      cursor: pointer;
+      display: none;
+    }
+
+    footer {
+      background-color: #111;
+      padding: 40px 20px;
+      color: #ccc;
+      margin-top: 60px;
+    }
+
+    .footer-content {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 30px;
+      max-width: 1200px;
+      margin: auto;
+    }
+
+    .footer-content h3 {
+      color: #fff;
+      margin-bottom: 10px;
+    }
+
+    .footer-content p {
+      font-size: 0.95rem;
+      line-height: 1.6;
+    }
+
+    .social-icons a {
+      margin-right: 10px;
+      color: #ccc;
+      font-size: 1.4rem;
+      transition: color 0.3s ease;
+    }
+
+    .social-icons a:hover {
+      color: #e50914;
+    }
+
+    .app-download img {
+      width: 150px;
+      margin-top: 10px;
+      border-radius: 6px;
+    }
+
+    .footer-bottom {
+      text-align: center;
+      margin-top: 20px;
+      font-size: 0.8rem;
+      color: #666;
+    }
+
+    @media (max-width: 768px) {
+      #filters {
+        flex-direction: column;
+        align-items: center;
+      }
+
+      .movie-row {
+        padding: 0 20px;
+      }
+    }
+
+    #mainHeader {
+      background-image: url('https://x.uuu.cam/pics/pornstarslikeitbig/keiran-lee-missy-martinez/piedi-pornstar-pinkfineart/hd-keiran-lee-missy-martinez-8.jpg');
+      background-size: cover;
+      background-position: center;
+      background-repeat: no-repeat;
+      height: 150px;
+      display: flex;
+      align-items: center;
+      padding-left: 30px;
+      color: white;
+      text-shadow: 2px 2px 6px rgba(0,0,0,0.7);
+      font-weight: 900;
+      font-size: 2.5rem;
+      user-select: none;
+    }
+
+    #logo {
+      width: 60px;
+      height: auto;
+      border-radius: 8px;
+      object-fit: contain;
+      margin-right: 20px;
+    }
+    .lion-animation-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 30px auto;
+  padding: 20px;
+  border-radius: 20px;
+  box-shadow: 0 8px 24px rgba(229, 9, 20, 0.4);
+  max-width: 320px;
+
+  /* Add your background image here */
+  background-image: url('https://x.uuu.cam/pics/pornstarslikeitbig/keiran-lee-missy-martinez/piedi-pornstar-pinkfineart/hd-keiran-lee-missy-martinez-8.jpg');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+@media (max-width: 480px) {
+  .lion-animation-container dotlottie-player {
+    width: 200px !important;
+    height: 200px !important;
+  }
+}
+#loadingScreen {
+  position: fixed;
+  top: 0; left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: #141414; /* or any color you like */
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  z-index: 9999; /* make sure it's on top */
+  color: #e50914;
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 900;
+  font-size: 3rem;
+  user-select: none;
+}
+
+  </style>
+  
+  <script src="https://unpkg.com/@dotlottie/player-component@2.7.12/dist/dotlottie-player.mjs" type="module"></script>
+
+</head>
+<body>
+  <video class="fullscreen" controls></video>
+<div id="closeVideoBtn">&times;</div>
+
+  <div id="loadingScreen">
+    <h1>SavaMovies Welcome</h1>
+    <dotlottie-player 
+      src="https://lottie.host/204b434b-17e2-4024-b70a-cda6aea57fdb/F16KYNFDoN.lottie" 
+      background="transparent" 
+      speed="1" 
+      style="width: 300px; height: 300px;" 
+      loop 
+      autoplay>
+    </dotlottie-player>
+  </div>
+  
+
+  <header id="mainHeader">
+    <header id="mainHeader">
+      <!-- existing header code -->
+    </header>
+    
+    <!-- Running Lion GIF -->
+    <div class="lion-animation-container">
+      <dotlottie-player
+        src="https://lottie.host/13981688-b33a-497f-9d05-f649378125a1/2jhYSS5aXb.lottie"
+        background="transparent"
+        speed="1"
+        style="width: 300px; height: 300px;"
+        loop
+        autoplay
+      ></dotlottie-player>
+    </div>
+      
+  
+    </div>
+    
+    <a href="index.html">
+      <img src="https://x.uuu.cam/pics/privateclassics/flopy/paradise-socks-porndex/hd-flopy-8.jpg" alt="SavaMovies Logo" id="logo" />
+    </a>
+    
+  </header>
+
+  <div id="filters">
+    <input type="text" id="searchBox" placeholder="Search movies..." />
+    <select id="categoryFilter">
+      <option value="">All Categories</option>
+      <option value="Action">Action</option>
+      <option value="Comedy">Comedy</option>
+      <option value="Drama">Drama</option>
+      <option value="Romance">Romance</option>
+      <option value="Horror">Horror</option>
+      <option value="Sci-Fi">Sci-Fi</option>
+    </select>
+    <button onclick="loadMovies()">Search</button>
+  </div>
+
+  
+
+  <section id="hero">
+    <h2 id="heroTitle"></h2>
+    <p id="heroDescription"></p>
+  </section>
+
+  <div id="categories"></div>
+
+  <div id="closeVideoBtn">&times;</div>
+
+  <footer>
+    <div class="footer-content">
+      <div>
+        <h3>About SavaMovies</h3>
+        <p>SavaMovies is your go-to platform to enjoy the latest movies and porns videos from every genre. Built for speed, simplicity, and fun!</p>
+      </div>
+      <div>
+        <h3>Follow Us</h3>
+        <div class="social-icons">
+          <a href="savamovies" target="_blank">
+            <img src="https://img.icons8.com/?size=100&id=uLWV5A9vXIPu&format=png&color=000000" alt="Facebook" style="width: 32px; height: 32px; vertical-align: middle;" />
+          </a>
+          <a href="savamovies" target="_blank">
+            <img src="https://img.icons8.com/?size=100&id=Xy10Jcu1L2Su&format=png&color=000000" alt="Instagram" style="width: 32px; height: 32px; vertical-align: middle;" />
+          </a>
+          <a href="#" target="_blank">
+            <img src="https://img.icons8.com/?size=100&id=qLVB1tIe9Ts9&format=png&color=000000" alt="YouTube" style="width: 32px; height: 32px; vertical-align: middle;" />
+          </a>
+        </div>
+      </div>
+      <div>
+        <h3>Download Our App</h3>
+        <p>Watch movies on the go.</p>
+        <a href="#"><img src="https://i.postimg.cc/HxS9PRSS/Screenshot-at-2025-07-04-21-32-10.png" alt="Download App"></a>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      &copy; 2025 SavaMovies. All rights reserved.
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+ 
+  <script
+  src="https://unpkg.com/@dotlottie/player-component@2.7.12/dist/dotlottie-player.mjs"
+  type="module"
+></script>
+<script>
+  window.addEventListener('load', () => {
+    setTimeout(() => {
+      const loader = document.getElementById('loadingScreen');
+      if(loader){
+        loader.style.transition = 'opacity 0.8s ease';
+        loader.style.opacity = 0;
+        setTimeout(() => loader.style.display = 'none', 800);
+      }
+    }, 6000);
+  });
+</script>
+</body>
+</html>

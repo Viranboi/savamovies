@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>SavaMovies Admin - Upload Movie</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <style>
+    * {
+      box-sizing: border-box;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      background-color: #141414;
+      color: #fff;
+      padding: 40px 20px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    h2 {
+      font-size: 2.5rem;
+      color: #e50914;
+      margin-bottom: 30px;
+    }
+
+    form {
+      background-color: #1f1f1f;
+      padding: 30px;
+      border-radius: 12px;
+      width: 100%;
+      max-width: 500px;
+      box-shadow: 0 8px 25px rgba(0, 0, 0, 0.5);
+    }
+
+    form input,
+    form textarea,
+    form select {
+      width: 100%;
+      padding: 12px;
+      margin-bottom: 20px;
+      border: none;
+      border-radius: 6px;
+      background-color: #333;
+      color: #eee;
+      font-size: 1rem;
+      transition: background-color 0.3s;
+    }
+
+    form input:focus,
+    form textarea:focus,
+    form select:focus {
+      background-color: #444;
+      outline: none;
+    }
+
+    label {
+      display: block;
+      margin-bottom: 6px;
+      font-weight: bold;
+      color: #ccc;
+    }
+
+    button[type="submit"] {
+      width: 100%;
+      padding: 14px;
+      background-color: #e50914;
+      border: none;
+      border-radius: 6px;
+      color: white;
+      font-size: 1.1rem;
+      font-weight: bold;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+    }
+
+    button[type="submit"]:hover {
+      background-color: #f40612;
+    }
+
+    /* Mobile responsive */
+    @media (max-width: 600px) {
+      form {
+        padding: 20px;
+      }
+
+      h2 {
+        font-size: 2rem;
+      }
+
+      button {
+        font-size: 1rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <h2>Upload Movie</h2>
+  <form id="uploadForm">
+    <label for="name">Movie Name</label>
+    <input name="name" id="name" placeholder="Enter movie name" required />
+
+    <label for="video_link">Video Link</label>
+    <input name="video_link" id="video_link" placeholder="Enter video URL" required />
+
+    <label for="thumbnail_link">Thumbnail Link</label>
+    <input name="thumbnail_link" id="thumbnail_link" placeholder="Enter thumbnail URL" required />
+
+    <label for="description">Description</label>
+    <textarea name="description" id="description" placeholder="Enter movie description" rows="4" required></textarea>
+
+    <label for="category">Category</label>
+    <select name="category" id="category" required>
+      <option value="">Select category</option>
+      <option value="Action">Action</option>
+      <option value="Comedy">Comedy</option>
+      <option value="Drama">Drama</option>
+      <option value="Horror">Horror</option>
+      <option value="Romance">Romance</option>
+      <option value="Sci-Fi">Sci-Fi</option>
+      <!-- You can add more -->
+    </select>
+
+    <button type="submit">Upload Movie</button>
+  </form>
+
+  <script>
+    const form = document.getElementById('uploadForm');
+    form.onsubmit = async (e) => {
+      e.preventDefault();
+      const formData = new FormData(form);
+      const body = Object.fromEntries(formData.entries());
+
+      try {
+        const res = await fetch('/api/movies/add', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(body),
+        });
+        const data = await res.json();
+        if (res.ok) {
+          alert(data.message);
+          form.reset();
+        } else {
+          alert('Error: ' + (data.message || 'Unknown error'));
+        }
+      } catch (err) {
+        alert('Network error');
+      }
+    };
+  </script>
+</body>
+</html>
